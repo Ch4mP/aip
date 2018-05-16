@@ -25,7 +25,7 @@ public class Guard {
 	
 	// Check password
 	public boolean isPW(String pw) {
-		return (pw == this.pw);
+		return (this.pw.equals(pw));
 	}
 	
 	// Change the password if the old password is correct

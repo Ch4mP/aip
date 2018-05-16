@@ -3,11 +3,15 @@ package rest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+import com.sun.jersey.spi.resource.Singleton;
+
 // http://localhost:8080/rest/rest/guard
 // name:port/project/root/path...
 
-// Aenderungen werden nicht im Betrieb uebernommen, authentificated = true...s
+// Aenderungen werden nicht im Betrieb uebernommen, authentificated = true...
+// Nur mit @Singleton
 
+@Singleton
 @Path("/guard")
 public class LogInMask {
 	
@@ -26,7 +30,6 @@ public class LogInMask {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("/profile:{name}")
 	public String profile(@PathParam("name") String name) {
-		System.out.println(this.authentificated + " " + this.guard);
 		if(this.authentificated && (this.guard != null)) {
 			return this.guard.getName();
 		}else {
